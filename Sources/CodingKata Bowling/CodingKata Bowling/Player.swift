@@ -33,7 +33,7 @@ public class Player {
         frameRolls.append(Roll(pins: pins))
 
         // assert stuff
-        if frames.count > Game.TOTAL_FRAMES {
+        if Game.TOTAL_FRAMES > frames.count {
             assert(frameRolls.count <= Game.TOTAL_ROLLS_PER_FRAME)
         }
         
