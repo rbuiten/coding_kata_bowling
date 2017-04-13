@@ -40,8 +40,61 @@ game.throwBall(pins: 10)
 game.nextPlayer()
 
 let totalScoreJairo = jairo.getTotalScore()
+print("totalScoreJairo: \(totalScoreJairo)")
 assert(totalScoreJairo == 25)
 let totalScoreMeredith = meredith.getTotalScore()
+print("totalScoreMeredith: \(totalScoreMeredith)")
 assert(totalScoreMeredith == 18)
 let totalScoreRick = rick.getTotalScore()
+print("totalScoreRick: \(totalScoreRick)")
 assert(totalScoreRick == 18)
+
+
+
+
+let gamePerfect = Game()
+let playerPerfectGame = Player(name: "PERFECT")
+gamePerfect.addPlayer(player: playerPerfectGame)
+gamePerfect.throwBall(pins: 10)
+gamePerfect.nextPlayer()
+gamePerfect.throwBall(pins: 10)
+gamePerfect.nextPlayer()
+gamePerfect.throwBall(pins: 10)
+gamePerfect.nextPlayer()
+gamePerfect.throwBall(pins: 10)
+gamePerfect.nextPlayer()
+gamePerfect.throwBall(pins: 10)
+gamePerfect.nextPlayer()
+gamePerfect.throwBall(pins: 10)
+gamePerfect.nextPlayer()
+gamePerfect.throwBall(pins: 10)
+gamePerfect.nextPlayer()
+gamePerfect.throwBall(pins: 10)
+gamePerfect.nextPlayer()
+gamePerfect.throwBall(pins: 10)
+gamePerfect.nextPlayer()
+gamePerfect.throwBall(pins: 10)
+gamePerfect.nextPlayer()
+gamePerfect.throwBall(pins: 10)
+gamePerfect.nextPlayer()
+gamePerfect.throwBall(pins: 10)
+gamePerfect.nextPlayer()
+let totalScorePerfectGame = playerPerfectGame.getTotalScore()
+print("totalScorePerfectGame: \(totalScorePerfectGame)")
+assert(totalScorePerfectGame == 300)
+
+
+
+
+/*
+STEPS:
+
+ - Edit Game to loop through players
+ - Throw ball by player 
+ - Count pins for player
+ - Validate max 2 throws
+ - Check for bonus
+ - Add extra values: 0 game - 300 points perfect game
+ - Automatically to nextPlayer
+
+*/

@@ -10,6 +10,8 @@
 		1F5671011E9B60F500B3B4D0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5671001E9B60F500B3B4D0 /* main.swift */; };
 		1F5671081E9B612F00B3B4D0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5671071E9B612F00B3B4D0 /* Game.swift */; };
 		1F56710A1E9B6B4900B3B4D0 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5671091E9B6B4900B3B4D0 /* Player.swift */; };
+		3C638337A09E7694A5AE32C4 /* Roll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6389563C7C36CCBF3943C5 /* Roll.swift */; };
+		3C638F967A4609CF2C3AED5C /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C638A6021AFC4A9B72A2EA4 /* Frame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +31,8 @@
 		1F5671001E9B60F500B3B4D0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1F5671071E9B612F00B3B4D0 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		1F5671091E9B6B4900B3B4D0 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		3C6389563C7C36CCBF3943C5 /* Roll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roll.swift; sourceTree = "<group>"; };
+		3C638A6021AFC4A9B72A2EA4 /* Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 				1F5671001E9B60F500B3B4D0 /* main.swift */,
 				1F5671071E9B612F00B3B4D0 /* Game.swift */,
 				1F5671091E9B6B4900B3B4D0 /* Player.swift */,
+				3C638A6021AFC4A9B72A2EA4 /* Frame.swift */,
+				3C6389563C7C36CCBF3943C5 /* Roll.swift */,
 			);
 			path = "CodingKata Bowling";
 			sourceTree = "<group>";
@@ -130,6 +136,8 @@
 				1F5671011E9B60F500B3B4D0 /* main.swift in Sources */,
 				1F56710A1E9B6B4900B3B4D0 /* Player.swift in Sources */,
 				1F5671081E9B612F00B3B4D0 /* Game.swift in Sources */,
+				3C638F967A4609CF2C3AED5C /* Frame.swift in Sources */,
+				3C638337A09E7694A5AE32C4 /* Roll.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

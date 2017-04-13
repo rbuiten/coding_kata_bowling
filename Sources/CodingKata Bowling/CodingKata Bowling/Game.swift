@@ -9,29 +9,35 @@
 import Foundation
 
 public class Game {
+    static let TOTAL_FRAMES = 10
+    static let TOTAL_ROLLS_PER_FRAME = 2
     
     var players : [Player] = []
-    var activePlayer : Player?
+    var activePlayer = 0
+    var frame = 0
     
     func addPlayer(player: Player){
         players.append(player)
     }
     
     func nextPlayer(){
+        activePlayer += 1
+        if activePlayer >= players.count {
+            activePlayer = 0
+        }
         
+        frame += 1
     }
     
     func startGame(){
-    
+        activePlayer = 0
+        frame = 0
     }
     
     func throwBall(pins: Int) {
-        guard let player = activePlayer else {
-            print("OOPS, no user found!")
-            return
-        }
+        let player = players[activePlayer]
+        print("throw ball for user \(player.name) ");
         
-        print("throw ball for user \(player.name)")
+        player.throwBall(frame: frame, pins: pins)
     }
-
 }
