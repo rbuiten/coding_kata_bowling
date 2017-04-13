@@ -55,6 +55,8 @@ assert(totalScoreRick == 18)
 let gamePerfect = Game()
 let playerPerfectGame = Player(name: "PERFECT")
 gamePerfect.addPlayer(player: playerPerfectGame)
+gamePerfect.startGame()
+
 gamePerfect.throwBall(pins: 10)
 gamePerfect.nextPlayer()
 gamePerfect.throwBall(pins: 10)
