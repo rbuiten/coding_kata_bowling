@@ -24,9 +24,8 @@ public class Game {
         activePlayer += 1
         if activePlayer >= players.count {
             activePlayer = 0
+            frame += 1
         }
-        
-        frame += 1
     }
     
     func startGame(){

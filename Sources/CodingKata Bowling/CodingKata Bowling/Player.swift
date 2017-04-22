@@ -35,6 +35,8 @@ public class Player {
         // assert stuff
         if Game.TOTAL_FRAMES > frames.count {
             assert(frameRolls.count <= Game.TOTAL_ROLLS_PER_FRAME)
+        } else {
+            assert(frameRolls.count <= Game.TOTAL_ROLLS_PER_FRAME + 2)
         }
         
         frames.updateValue(frameRolls, forKey: frame)
@@ -44,46 +46,46 @@ public class Player {
 
     private func calculateMethod1() -> Int {
         var totalScore = 0
-        var roll = 0
+        var rollIndex = 0
 
         for _ in 1...Game.TOTAL_FRAMES {
-            if (isStrike(roll)) {
-                totalScore += 10 + strikeBonus(roll)
-                roll += 1
-            } else if isSpare(roll) {
-                totalScore += 10 + spareBonus(roll)
-                roll += 2
+            if (isStrike(rollIndex)) {
+                totalScore += 10 + strikeBonus(rollIndex)
+                rollIndex += 1
+            } else if isSpare(rollIndex) {
+                totalScore += 10 + spareBonus(rollIndex)
+                rollIndex += 2
             } else {
-                totalScore += sumOfBallsInFrame(roll)
-                roll += 2
+                totalScore += sumOfBallsInFrame(rollIndex)
+                rollIndex += 2
             }
         }
         return totalScore
     }
 
-    private func isSpare(_ roll: Int) -> Bool {
-        return getRollValue(roll) + getRollValue(roll + 1) == 10
+    private func isSpare(_ rollIndex: Int) -> Bool {
+        return getRollValue(rollIndex) + getRollValue(rollIndex + 1) == 10
     }
     
-    private func isStrike(_ roll: Int) -> Bool {
-        return getRollValue(roll) == 10
+    private func isStrike(_ rollIndex: Int) -> Bool {
+        return getRollValue(rollIndex) == 10
     }
     
-    private func strikeBonus(_ roll: Int) -> Int {
-        return getRollValue(roll + 1) + getRollValue(roll + 2)
+    private func strikeBonus(_ rollIndex: Int) -> Int {
+        return getRollValue(rollIndex + 1) + getRollValue(rollIndex + 2)
     }
     
-    private func spareBonus(_ roll: Int) -> Int {
-        return getRollValue(roll + 2)
+    private func spareBonus(_ rollIndex: Int) -> Int {
+        return getRollValue(rollIndex + 2)
     }
     
-    private func sumOfBallsInFrame(_ roll: Int) -> Int {
-        return getRollValue(roll) + getRollValue(roll + 1)
+    private func sumOfBallsInFrame(_ rollIndex: Int) -> Int {
+        return getRollValue(rollIndex) + getRollValue(rollIndex + 1)
     }
     
-    private func getRollValue(_ roll: Int) -> Int {
-        if rolls.count > roll {
-            return rolls[roll].pins
+    private func getRollValue(_ rollIndex: Int) -> Int {
+        if rolls.count > rollIndex {
+            return rolls[rollIndex].pins
         }
         return 0
     }
@@ -98,14 +100,37 @@ public class Player {
             let rolls = frames[frame] ?? []
         
             if isStrike(rolls) {
-                totalScore += 10 + strikeBonus(frame)
+                totalScore += 10 + strikeBonusFrame(frame)
             } else if isSpare(rolls) {
-                totalScore += 10 + spareBonus(frame)
+                totalScore += 10 + spareBonusFrame(frame)
             } else {
                 totalScore += sumOfBallsInFrame(rolls)
             }
         }
         return totalScore
+    }
+
+    private func strikeBonusFrame(_ frame: Int) -> Int {
+        let rolls = frames[frame + 1] ?? []
+
+        if(rolls.count == 1){
+            let secondRolls = frames[frame + 2] ?? []
+            let totalPinsSecondTry = !secondRolls.isEmpty ? secondRolls[0].pins : 0
+            return rolls[0].pins + totalPinsSecondTry
+        } else if(rolls.count >= 2){
+            return rolls[0].pins + rolls[1].pins
+        } else {
+            return 0
+        }
+    }
+
+    private func spareBonusFrame(_ frame: Int) -> Int {
+        let rolls = frames[frame + 1] ?? []
+        if(rolls.count >= 1){
+            return rolls[0].pins
+        } else {
+            return 0
+        }
     }
 
     private func isSpare(_ rolls: [Roll]) -> Bool {
