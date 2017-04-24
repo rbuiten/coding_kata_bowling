@@ -29,20 +29,15 @@ public class Player {
     }
     
     func throwBall(frame: Int, pins: Int) {
-        var frameRolls = frames[frame] ?? []
-        frameRolls.append(Roll(pins: pins))
 
-        // assert stuff
-        if Game.TOTAL_FRAMES > frames.count {
-            assert(frameRolls.count <= Game.TOTAL_ROLLS_PER_FRAME)
-        } else {
-            assert(frameRolls.count <= Game.TOTAL_ROLLS_PER_FRAME + 2)
-        }
-        
-        frames.updateValue(frameRolls, forKey: frame)
+        throwBallMethod1(frame: frame, pins: pins)
+        throwBallMethod2(frame: frame, pins: pins)
+    }
+
+
+    private func throwBallMethod1(frame: Int, pins: Int){
         rolls.append(Roll(pins: pins))
     }
-    
 
     private func calculateMethod1() -> Int {
         var totalScore = 0
@@ -93,6 +88,20 @@ public class Player {
 
 
 
+    private func throwBallMethod2(frame: Int, pins: Int){
+        var frameRolls = frames[frame] ?? []
+        frameRolls.append(Roll(pins: pins))
+
+        // assert stuff
+        if Game.TOTAL_FRAMES > frames.count {
+            assert(frameRolls.count <= Game.TOTAL_ROLLS_PER_FRAME)
+        } else {
+            assert(frameRolls.count <= Game.TOTAL_ROLLS_PER_FRAME + 2)
+        }
+
+        frames.updateValue(frameRolls, forKey: frame)
+    }
+
     private func calculateMethod2() -> Int {
         var totalScore = 0
 
@@ -113,7 +122,7 @@ public class Player {
     private func strikeBonusFrame(_ frame: Int) -> Int {
         let rolls = frames[frame + 1] ?? []
 
-        if(rolls.count == 1){
+        if(isStrike(rolls)){
             let secondRolls = frames[frame + 2] ?? []
             let totalPinsSecondTry = !secondRolls.isEmpty ? secondRolls[0].pins : 0
             return rolls[0].pins + totalPinsSecondTry
